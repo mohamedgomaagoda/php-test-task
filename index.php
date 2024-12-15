@@ -7,10 +7,10 @@
     <?php
 
     // Database connection settings
-    $servername = "localhost";  // Change this to your server address if not localhost
-    $username = "web_user";         // Replace with your MySQL username
-    $password = "simple123";             // Replace with your MySQL password
-    $dbname = "web_db";         // Replace with your database name
+    $servername = "localhost";  
+    $username = "web_user";         
+    $password = "simple123";             
+    $dbname = "web_db";         
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
