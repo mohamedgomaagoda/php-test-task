@@ -1,6 +1,49 @@
 # My Website Project
 
 ## Installation Steps
+1. **Install Required Packages**  
+   Install Apache, MySQL, and PHP:  
+   ```bash
+   sudo apt-get update  
+   sudo apt-get install apache2 mysql-server php libapache2-mod-php php-mysql  
+   ```
+
+2. **Configure Apache**  
+   - Ensure the website is served from `/var/www/html/`.  
+   - Test by creating `/var/www/html/index.html` with simple content and accessing it via `http://<server-ip>/`.
+
+3. **Create a Simple Website**  
+   - Replace `index.html` with `index.php` containing:  
+     ```php
+     <?php echo "Hello World!"; ?>
+     ```  
+   - Verify by visiting `http://<server-ip>/`.
+
+4. **Configure MySQL**  
+   - Secure MySQL installation:  
+     ```bash
+     sudo mysql_secure_installation
+     ```  
+   - Create a database and user:  
+     ```sql
+     CREATE DATABASE web_db;  
+     CREATE USER 'web_user'@'localhost' IDENTIFIED BY 'simple123';  
+     GRANT ALL PRIVILEGES ON web_db.* TO 'web_user'@'localhost';  
+     FLUSH PRIVILEGES;
+     ```
+
+5. **Modify the Website to Use MySQL**  
+   Update `index.php` to connect to MySQL and display dynamic content, such as fetching the current time:  
+   ```php
+   <?php
+   $conn = new mysqli('localhost', 'web_user', 'simple123', 'web_db');
+   if ($conn->connect_error) {
+       die("Connection failed: " . $conn->connect_error);
+   }
+   echo "Connected to MySQL! Current Time: " . date('Y-m-d H:i:s');
+   ?>
+   
+
 1. **Initialize Git Repository**:
    ```bash
    git init
